@@ -1,0 +1,108 @@
+dl, ol, ul{
+    margin-bottom: 0;
+}
+
+.nav-list li a{
+    text-decoration: none !important;
+}
+
+
+.play-btn{
+    display: none;
+}
+
+
+.form-wrapper{
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.error{
+    font-weight: 700;
+}
+
+.firstt{
+    width: 100%;
+
+    max-width: 550px;
+
+    border: none;
+}
+
+.firstt input, .firstt .countryFlag{
+    margin-top: 20px;
+
+    height: 50px;
+
+    font-size: 21px;
+}
+
+.dropdown-toggle::after{
+    margin-left: 8px;
+}
+
+.firstt .leadSubmit{
+    width: 100%;
+    height: 60px;
+
+    background-color: #d0ff49;
+    color: #000;
+
+    font-size: 21px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+.secondd{
+    width: 100%;
+
+    max-width: 550px;
+
+    border: none;
+}
+
+.secondd input, .secondd .countryFlag{
+    margin-top: 20px;
+
+    height: 50px;
+
+    font-size: 21px;
+}
+
+.dropdown-toggle::after{
+    margin-left: 8px;
+}
+
+.secondd .leadSubmit{
+    width: 100%;
+    height: 60px;
+
+    background-color: #d0ff49;
+    color: #000;
+
+    font-size: 21px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+.input-group{
+    flex-wrap: nowrap;
+}
+
+.form-group .btn{
+    background-color: rgb(87, 194, 244);
+}
+
+
+.about-section .text-part .btn, .celeb-section .container .text-part .btn, .btn{
+    padding: 1.2rem 2.8rem;
+    font-size: 1.1rem;
+    color: #fff;
+}

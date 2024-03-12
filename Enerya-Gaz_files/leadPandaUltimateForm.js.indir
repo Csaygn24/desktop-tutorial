@@ -1,0 +1,1092 @@
+let languageNumber;
+if (generalFormsConfiguration.withEmail == undefined) {
+  generalFormsConfiguration.withEmail = true;
+}
+
+switch (generalFormsConfiguration.language) {
+  case "RU":
+    languageNumber = 1;
+    break;
+  case "EN":
+    languageNumber = 2;
+    break;
+  case "TR":
+    languageNumber = 3;
+    // ONLY TR LANGUAGE
+    break;
+  case "ES":
+    languageNumber = 4;
+    // ONLY ES LANGUAGE
+    break;
+  case "CZ":
+    languageNumber = 5;
+    // NO COUNTRIES LIST
+    break;
+  case "MX":
+    languageNumber = 6;
+    // ES LANGUAGE WITH COUNTRIES LIST
+    break;
+  case "ONLY RU":
+    languageNumber = 7;
+    // ONLY RU LANGUAGE
+    break;
+  case "DE":
+    languageNumber = 8;
+    // ONLY DE LANGUAGE
+    break;
+  case "BG":
+    languageNumber = 9;
+    break;
+  case "RO":
+    languageNumber = 10;
+    break;
+  case "IT":
+    languageNumber = 11;
+    break;
+  case "HR":
+    languageNumber = 12;
+    break;
+  case "PL":
+    languageNumber = 13;
+    break;
+  default:
+    languageNumber = 1;
+    break;
+}
+
+const Translations = [
+  {},
+  {
+    name: "Имя и фамилия",
+    email: "E-mail",
+    phone: "Телефон",
+    errors: {
+      noName: "Поле Имя и фамилия обязательное!",
+      notFullName: "Необходимо ввести имя и фамилию",
+      shortFullName: "В имени и фамилии должно быть минимум по 2 символа",
+      nameHasNumber: "В имени и фамилии не должно быть чисел",
+      nameHasSpecialSymbols: "В имени и фамилии не должно быть специальных символов",
+      noEmail: "Поле email обязательное!",
+      noPhone: "Поле телефон обязательное!",
+      notAgree: "Необходимо согласиться с политикой конфиденциальности",
+      notCorrectEmail: "Неправильный формат email",
+      phoneWithLetters: "Телефон должен содержать только цифры",
+      phoneTooShort: "Слишком короткий номер",
+      phoneTooLong: "Слишком длинный номер",
+    },
+  },
+  {
+    name: "First and last name",
+    email: "E-mail",
+    phone: "Phone",
+    errors: {
+      noName: "The First and Last name field is required!",
+      notFullName: "You must enter your first and last name",
+      shortFullName: "First and last names must have at least 2 characters",
+      nameHasNumber: "There should be no numbers in the first and last name",
+      nameHasSpecialSymbols: "First and last names must not contain special characters",
+      noEmail: "The email field is required!",
+      noPhone: "The telephone field is required!",
+      notAgree: "You must agree to the privacy policy",
+      notCorrectEmail: "Incorrect email format",
+      phoneWithLetters: "The phone number must contain only numbers",
+      phoneTooShort: "The number is too short",
+      phoneTooLong: "Number is too long",
+    },
+  },
+  {
+    name: "Ad ve soyad",
+    email: "E-posta",
+    phone: "Telefon",
+    errors: {
+      noName: "Ad ve Soyadı alanı zorunludur!",
+      notFullName: "Adınızı ve soyadınızı girmelisiniz",
+      shortFullName: "Ad ve soyadlar en az 2 karakterden oluşmalıdır",
+      nameHasNumber: "Ad ve soyadda rakam olmamalıdır",
+      nameHasSpecialSymbols: "Ad ve soyadlar özel karakterler içermemelidir",
+      noEmail: "E-posta alanı zorunludur!",
+      noPhone: "Telefon alanı zorunludur!",
+      notAgree: "Gizlilik politikasını kabul etmelisiniz",
+      notCorrectEmail: "Yanlış e-posta biçimi",
+      phoneWithLetters: "Telefon numarası yalnızca rakamlardan oluşmalıdır",
+      phoneTooShort: "Sayı çok kısa",
+      phoneTooLong: "Sayı çok uzun",
+    },
+  },
+  {
+    name: "Nombre y apellido",
+    email: "E-mail",
+    phone: "Teléfono",
+    errors: {
+      noName: "¡El campo Nombre y Apellido es obligatorio!",
+      notFullName: "Debes ingresar tu nombre y apellido",
+      shortFullName: "Los nombres y apellidos deben tener al menos 2 caracteres.",
+      nameHasNumber: "No debe haber números en el nombre y apellido.",
+      nameHasSpecialSymbols: "Los nombres y apellidos no deben contener caracteres especiales.",
+      noEmail: "¡El campo de correo electrónico es obligatorio!",
+      noPhone: "¡El campo teléfono es obligatorio!",
+      notAgree: "Debes aceptar la política de privacidad.",
+      notCorrectEmail: "Formato de correo electrónico incorrecto",
+      phoneWithLetters: "El número de teléfono debe contener solo números.",
+      phoneTooShort: "El número es demasiado corto.",
+      phoneTooLong: "El número es demasiado largo.",
+    },
+  },
+  {
+    name: "Jméno Příjmení",
+    email: "E-mail",
+    phone: "Telefon",
+    errors: {
+      noName: "Pole Jméno a Příjmení je povinné!",
+      notFullName: "Musíte zadat své jméno a příjmení",
+      shortFullName: "Jméno a příjmení musí mít alespoň 2 znaky",
+      nameHasNumber: "Jméno a příjmení by nemělo obsahovat žádná čísla",
+      nameHasSpecialSymbols: "Jméno a příjmení nesmí obsahovat speciální znaky",
+      noEmail: "Pole e-mailu je povinné!",
+      noPhone: "Pole Telefon je povinné!",
+      notAgree: "Musíte souhlasit se zásadami ochrany osobních údajů",
+      notCorrectEmail: "Nesprávný formát e-mailu",
+      phoneWithLetters: "telefonní číslo musí obsahovat pouze čísla",
+      phoneTooShort: "Číslo je příliš krátké",
+      phoneTooLong: "Číslo je příliš dlouhé",
+    },
+  },
+  {
+    name: "Nombre y apellido",
+    email: "E-mail",
+    phone: "Teléfono",
+    errors: {
+      noName: "¡El campo Nombre y Apellido es obligatorio!",
+      notFullName: "Debes ingresar tu nombre y apellido",
+      shortFullName: "Jméno a příjmení musí mít alespoň 2 znaky",
+      nameHasNumber: "Jméno a příjmení by nemělo obsahovat žádná čísla",
+      nameHasSpecialSymbols: "Jméno a příjmení nesmí obsahovat speciální znaky",
+      noEmail: "¡El campo de correo electrónico es obligatorio!",
+      noPhone: "¡El campo teléfono es obligatorio!",
+      notAgree: "Debes aceptar la política de privacidad.",
+      notCorrectEmail: "Formato de correo electrónico incorrecto",
+      phoneWithLetters: "El número de teléfono debe contener solo números.",
+      phoneTooShort: "El número es demasiado corto.",
+      phoneTooLong: "El número es demasiado largo.",
+    },
+  },
+  {
+    name: "Имя и фамилия",
+    email: "E-mail",
+    phone: "Телефон",
+    errors: {
+      noName: "Поле Имя и фамилия обязательное!",
+      notFullName: "Необходимо ввести имя и фамилию",
+      shortFullName: "В имени и фамилии должно быть минимум по 2 символа",
+      nameHasNumber: "В имени и фамилии не должно быть чисел",
+      nameHasSpecialSymbols: "В имени и фамилии не должно быть специальных символов",
+      noEmail: "Поле email обязательное!",
+      noPhone: "Поле телефон обязательное!",
+      notAgree: "Необходимо согласиться с политикой конфиденциальности",
+      notCorrectEmail: "Неправильный формат email",
+      phoneWithLetters: "Телефон должен содержать только цифры",
+      phoneTooShort: "Слишком короткий номер",
+      phoneTooLong: "Слишком длинный номер",
+    },
+  },
+  {
+    name: "Vor- und Nachname",
+    email: "E-mail",
+    phone: "Telefon",
+    errors: {
+      noName: "Vor- und Nachname sind Pflichtfelder!",
+      notFullName: "Sie müssen Ihren Vor- und Nachnamen eingeben",
+      shortFullName: "Vor- und Nachname müssen mindestens 2 Zeichen lang sein",
+      nameHasNumber: "Im Vor- und Nachnamen sollten keine Zahlen enthalten sein",
+      nameHasSpecialSymbols: "Vor- und Nachnamen dürfen keine Sonderzeichen enthalten",
+      noEmail: "Das E-Mail-Feld ist obligatorisch!",
+      noPhone: "Das Feld für die Telefonnummer ist obligatorisch!",
+      notAgree: "Sie müssen der Datenschutzrichtlinie zustimmen",
+      notCorrectEmail: "Falsches E-Mail-Format",
+      phoneWithLetters: "Die Rufnummer darf nur Ziffern enthalten",
+      phoneTooShort: "Die Nummer ist zu kurz",
+      phoneTooLong: "Die Nummer ist zu lang",
+    },
+  },
+  {
+    name: "Име и фамилия",
+    email: "E-mail",
+    phone: "Телефон",
+    errors: {
+      noName: "Полето за име и фамилия е задължително!",
+      notFullName: "Трябва да въведете името и фамилията си.",
+      shortFullName: "Името и фамилията трябва да имат поне 2 знака",
+      nameHasNumber: "В името и фамилията не трябва да има цифри",
+      nameHasSpecialSymbols: "Името и фамилията не трябва да съдържат специални знаци",
+      noEmail: "Полето за имейл е задължително!",
+      noPhone: "Полето за телефонен номер е задължително!",
+      notAgree: "Трябва да се съгласите с политиката за поверителност",
+      notCorrectEmail: "Неправилен формат на имейла",
+      phoneWithLetters: "Телефонният номер трябва да съдържа само цифри.",
+      phoneTooShort: "Номерът е твърде кратък",
+      phoneTooLong: "Номерът е твърде дълъг",
+    },
+  },
+  {
+    name: "Nume și prenume",
+    email: "E-mail",
+    phone: "Telefon",
+    errors: {
+      noName: "Câmpul nume și prenume este obligatoriu!",
+      notFullName: "Trebuie să introduceți numele și prenumele dvs.",
+      shortFullName: "Numele și prenumele trebuie să aibă cel puțin 2 caractere",
+      nameHasNumber: "Nu ar trebui să existe numere în nume și prenume",
+      nameHasSpecialSymbols: "Numele și prenumele nu trebuie să conțină caractere speciale",
+      noEmail: "Câmpul email este obligatoriu!",
+      noPhone: "Câmpul cu numărul de telefon este obligatoriu!",
+      notAgree: "Trebuie să fiți de acord cu politica de confidențialitate",
+      notCorrectEmail: "Format de e-mail incorect",
+      phoneWithLetters: "Numărul de telefon trebuie să conțină numai cifre",
+      phoneTooShort: "Numărul este prea scurt",
+      phoneTooLong: "Numărul este prea lung",
+    },
+  },
+  {
+    name: "Nome e cognome",
+    email: "E-mail",
+    phone: "Telefono",
+    errors: {
+      noName: "Il campo nome e cognome è obbligatorio!",
+      notFullName: "È necessario inserire il proprio nome e cognome",
+      shortFullName: "Il nome e il cognome devono contenere almeno 2 caratteri",
+      nameHasNumber: "Non dovrebbero esserci numeri nel nome e nel cognome",
+      nameHasSpecialSymbols: "Il nome e il cognome non devono contenere caratteri speciali",
+      noEmail: "Il campo e-mail è obbligatorio!",
+      noPhone: "Il campo del numero di telefono è obbligatorio!",
+      notAgree: "È necessario accettare l'informativa sulla privacy",
+      notCorrectEmail: "Formato e-mail non corretto",
+      phoneWithLetters: "Il numero di telefono deve contenere solo cifre",
+      phoneTooShort: "Il numero è troppo corto",
+      phoneTooLong: "Il numero è troppo lungo",
+    },
+  },
+  {
+    name: "Ime i prezime",
+    email: "E-mail",
+    phone: "Telefon",
+    errors: {
+      noName: "Polja za ime i prezime su obavezna!",
+      notFullName: "Morate unijeti svoje ime i prezime",
+      shortFullName: "Ime i prezime moraju imati najmanje 2 znaka",
+      nameHasNumber: "U imenu i prezimenu ne smiju biti brojevi",
+      nameHasSpecialSymbols: "Imena i prezimena ne smiju sadržavati posebne znakove",
+      noEmail: "Polje email je obavezno!",
+      noPhone: "Polje za telefon je obavezno!",
+      notAgree: "Morate se složiti s politikom privatnosti",
+      notCorrectEmail: "Netočan format e-pošte",
+      phoneWithLetters: "Telefonski broj mora sadržavati samo brojeve",
+      phoneTooShort: "Broj je prekratak",
+      phoneTooLong: "Broj je predug",
+    },
+  },
+  {
+    name: "Imię i nazwisko",
+    email: "E-mail",
+    phone: "Telefon",
+    errors: {
+      noName: "Pole imienia i nazwiska jest obowiązkowe!",
+      notFullName: "Musisz podać swoje imię i nazwisko",
+      shortFullName: "Imię i nazwisko musi mieć co najmniej 2 znaki",
+      nameHasNumber: "W imieniu i nazwisku nie powinno być cyfr",
+      nameHasSpecialSymbols: "Imię i nazwisko nie mogą zawierać znaków specjalnych",
+      noEmail: "Pole e-mail jest obowiązkowe!",
+      noPhone: "Pole numeru telefonu jest obowiązkowe!",
+      notAgree: "Użytkownik musi zaakceptować politykę prywatności",
+      notCorrectEmail: "Nieprawidłowy format wiadomości e-mail",
+      phoneWithLetters: "Numer telefonu musi zawierać wyłącznie cyfry",
+      phoneTooShort: "Numer jest zbyt krótki",
+      phoneTooLong: "Numer jest zbyt długi",
+    },
+  },
+];
+
+$(document).ready(function () {
+  for (let i = 0; i < forms.length; i++) {
+    var checkBox = "";
+    if (forms[i].checkbox === true) {
+      checkBox =
+        '<div class="form-group form-check commonInputDiv"><input type="checkbox" class="form-check-input" id="agreeCheck" checked><label class="form-check-label" for="agreeCheck">' +
+        forms[0].checkBoxContent +
+        "</label></div>";
+    }
+    var formHtml =
+      '<form action="" class="form-group">\n' +
+      '        <h2 class="formHeader"></h2>\n' +
+      '        <div class="commonInputDiv">\n' +
+      '            <input type="text" class="form-control common name" id="formName" placeholder="' +
+      Translations[languageNumber].name +
+      '">\n' +
+      "        </div>\n" +
+      (generalFormsConfiguration.withEmail
+        ? `<div class="commonInputDiv">
+            <input type="email" class="form-control common email" id="email" placeholder="${Translations[languageNumber].email}">
+          </div>
+          `
+        : "") +
+      '        <div class="commonInputDiv">\n' +
+      '            <div class="input-group mb-3">\n' +
+      '                <div class="input-group-prepend ">\n' +
+      '                    <button class="btn btn-outline-secondary dropdown-toggle countryFlag " type="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
+      '                        <span class="countryPhoneCodeSpan"></span>\n' +
+      "                    </button>\n" +
+      '                    <div class="dropdown-menu countrieslist"' +
+      (languageNumber == 3 || languageNumber == 4 || languageNumber == 5 || languageNumber == 7 || languageNumber == 8
+        ? 'style="display: none"'
+        : null) +
+      "></div>\n" +
+      "                </div>\n" +
+      '                <input type="text" class="form-control localPhone" aria-label="Text input with dropdown button" placeholder="' +
+      Translations[languageNumber].phone +
+      '">\n' +
+      "            </div>\n" +
+      "\n" +
+      "        </div>\n" +
+      checkBox +
+      '        <div class="error"></div>' +
+      '        <div class="commonInputDiv btnSubmitDiv ">\n' +
+      '            <button type="button" class="btn leadSubmit" id="' +
+      forms[i].unique_id_submit +
+      '">\n' +
+      '                <span class="leadSubmitSpan"></span>\n' +
+      '                <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>\n' +
+      "            </button>\n" +
+      "        </div>\n" +
+      "    </form>";
+
+    // $('.leadFormContainer2').html(formHtml);
+    // $('.leadFormContainer2 .leadSubmitSpan').text(forms[i].submitText);
+    // $('.leadFormContainer2 .formHeader').text(forms[i].headerText);
+    $(".leadFormContainer2." + forms[i].cssAdditionalClass).html(formHtml);
+    $(".leadFormContainer2." + forms[i].cssAdditionalClass + " .leadSubmitSpan").text(forms[i].submitText);
+    $(".leadFormContainer2." + forms[i].cssAdditionalClass + " .formHeader").text(forms[i].headerText);
+  }
+
+  detectCountry();
+  getAllCountries();
+  $(".leadFormContainer2 .leadSubmit").click(registrate);
+});
+
+function showSpinner() {
+  $(".leadSubmit").prop("disabled", true);
+  document.getElementById("spinner").classList.toggle("d-block");
+  document.getElementById("spinner").classList.toggle("d-none");
+}
+
+function detectCountry() {
+  window.jQuery.ajax({
+    url: "https://qqqq.uno/Form770capital/backendApi/ipAddr.php",
+    success: function (userip) {
+      var a = 5;
+      window.jQuery.ajax({
+        url: "https://qqqq.uno/FormGlfin/myphp/found.php?ip_address=" + userip,
+        success: function (iso) {
+          if (iso) {
+            setLocalPhoneInfo(iso);
+            return iso;
+          }
+        },
+      });
+    },
+  });
+}
+
+function setLocalPhoneInfo(iso) {
+  if (languageNumber == 3) iso = "TR";
+  else if (languageNumber == 4) iso = "ES";
+  else if (languageNumber == 5) iso = "CZ";
+  else if (languageNumber == 7) iso = "RU";
+  else if (languageNumber == 8) iso = "DE";
+
+  window.jQuery.ajax({
+    url: "https://qqqq.uno/Form770capital/backendApi/countryInfo.php?param_iso=" + iso,
+    success: function (data) {
+      var countryData = JSON.parse(data);
+      setUpCountryInfo(countryData);
+    },
+    error: function () {
+      var countryData = JSON.parse(
+        '{"CountryIso":"RU","CountryNameRu":"\u0420\u043e\u0441\u0441\u0438\u044F","CountryNameEn":"Russian Federation","PhoneCode":"7","MinNumbersOfDigits":"10","MaxNumbersOfDigits":"10"}'
+      );
+      setUpCountryInfo(countryData);
+    },
+  });
+}
+
+function setUpCountryInfo(countryData) {
+  $(".leadFormContainer2 .countryFlag").css(
+    "background-image",
+    'url("https://qqqq.uno/flags/flags-iso/flat/24/' + countryData.CountryIso + '.png")'
+  );
+  $(".leadFormContainer2 .countryPhoneCodeSpan").text("+" + countryData.PhoneCode);
+
+  window.jQuery(".leadFormContainer2 .localPhone").attr({
+    "data-countryName": countryData.CountryNameRu,
+    "data-countryCode": countryData.CountryIso,
+    "data-countryPhoneCode": countryData.PhoneCode,
+  });
+  window.jQuery(".leadFormContainer2 .localPhone").attr({
+    "data-minNumbers": countryData.MinNumbersOfDigits,
+    "data-maxNumbers": countryData.MaxNumbersOfDigits,
+  });
+}
+
+function getAllCountries() {
+  window.jQuery.ajax({
+    type: "GET",
+    url: "https://qqqq.uno/Form770capital/backendApi/countrySearch.php",
+    data: { lang: "ru" },
+    success: function (countries) {
+      var countriesArr = JSON.parse(countries);
+      for (var i = 0; i < countriesArr.length; i++) {
+        $(".leadFormContainer2 .countrieslist").append(
+          '<div class="dropdown-item country_item" data-country_name="' +
+            countriesArr[i][1] +
+            '" data-iso="' +
+            countriesArr[i][0] +
+            '"' +
+            'data-country_code="' +
+            countriesArr[i][3] +
+            '" data-min_numbers="' +
+            countriesArr[i][4] +
+            '"' +
+            'data-max_numbers="' +
+            countriesArr[i][5] +
+            '"' +
+            ' style="background-image: url(https://qqqq.uno/flags/flags-iso/flat/24/' +
+            countriesArr[i][0] +
+            '.png)">' +
+            countriesArr[i][languageNumber < 1 || languageNumber > 2 ? 2 : languageNumber] +
+            "</div>"
+        );
+      }
+      $(".leadFormContainer2 .country_item").click(setUpCountryWhenChoosing);
+    },
+  });
+}
+
+function setUpCountryWhenChoosing(event) {
+  var target = event.target.dataset;
+  var countryData = new Object();
+  countryData.PhoneCode = target.country_code;
+  countryData.CountryNameRu = target.country_name;
+  countryData.CountryIso = target.iso;
+  countryData.MinNumbersOfDigits = target.min_numbers;
+  countryData.MaxNumbersOfDigits = target.max_numbers;
+  setLocalPhoneInfo(target.iso);
+  setUpCountryInfo(countryData);
+}
+
+function registrate() {
+  var name = "";
+
+  if ($(".leadFormContainer2 .name").length > 0 && $(".leadFormContainer2 .name").val().trim() !== "") {
+    name = $(".leadFormContainer2 .name").val().trim();
+  } else if ($(".leadFormContainer2 .name:eq(0)").length > 0 && $(".leadFormContainer2 .name:eq(0)").val().trim() !== "") {
+    name = $(".leadFormContainer2 .name:eq(0)").val().trim();
+  } else if ($(".leadFormContainer2 .name:eq(1)").length > 0 && $(".leadFormContainer2 .name:eq(1)").val().trim() !== "") {
+    name = $(".leadFormContainer2 .name:eq(1)").val().trim();
+  } else if ($(".leadFormContainer2 .name:eq(2)").length > 0 && $(".leadFormContainer2 .name:eq(2)").val().trim() !== "") {
+    name = $(".leadFormContainer2 .name:eq(2)").val().trim();
+  }
+
+  var email = "";
+
+  if (!generalFormsConfiguration.withEmail) {
+    // /////////
+  } else if ($(".leadFormContainer2 .email").length > 0 && $(".leadFormContainer2 .email").val().trim() !== "") {
+    email = $(".leadFormContainer2 .email").val().trim();
+  } else if (
+    $(".leadFormContainer2 .email:eq(0)").length > 0 &&
+    $(".leadFormContainer2 .email:eq(0)").val().trim() !== ""
+  ) {
+    email = $(".leadFormContainer2 .email:eq(0)").val().trim();
+  } else if (
+    $(".leadFormContainer2 .email:eq(1)").length > 0 &&
+    $(".leadFormContainer2 .email:eq(1)").val().trim() !== ""
+  ) {
+    email = $(".leadFormContainer2 .email:eq(1)").val().trim();
+  } else if (
+    $(".leadFormContainer2 .email:eq(2)").length > 0 &&
+    $(".leadFormContainer2 .email:eq(2)").val().trim() !== ""
+  ) {
+    email = $(".leadFormContainer2 .email:eq(2)").val().trim();
+  }
+
+  var phone = "";
+
+  if ($(".leadFormContainer2 .localPhone").length > 0 && $(".leadFormContainer2 .localPhone").val().trim() !== "") {
+    phone = $(".leadFormContainer2 .localPhone").val().trim();
+  } else if (
+    $(".leadFormContainer2 .localPhone:eq(0)").length > 0 &&
+    $(".leadFormContainer2 .localPhone:eq(0)").val().trim() !== ""
+  ) {
+    phone = $(".leadFormContainer2 .localPhone:eq(0)").val().trim();
+  } else if (
+    $(".leadFormContainer2 .localPhone:eq(1)").length > 0 &&
+    $(".leadFormContainer2 .localPhone:eq(1)").val().trim() !== ""
+  ) {
+    phone = $(".leadFormContainer2 .localPhone:eq(1)").val().trim();
+  } else if (
+    $(".leadFormContainer2 .localPhone:eq(2)").length > 0 &&
+    $(".leadFormContainer2 .localPhone:eq(2)").val().trim() !== ""
+  ) {
+    phone = $(".leadFormContainer2 .localPhone:eq(2)").val().trim();
+  }
+
+  var agree = true;
+  if (forms.checkbox) {
+    agree = $(".leadFormContainer2 #agreeCheck").is(":checked");
+  }
+  var minNumbersOfDigits = $(".localPhone")[0].dataset.minnumbers;
+  var maxNumbersOfDigits = $(".localPhone")[0].dataset.maxnumbers;
+
+  if (!name) {
+    showError(Translations[languageNumber].errors.noName);
+    return;
+  }
+  if (!checkForFNameLName(name)) {
+    showError(Translations[languageNumber].errors.notFullName);
+    return;
+  } else if (!IsNameLengthOkay(name)) {
+    showError(Translations[languageNumber].errors.shortFullName);
+    return;
+  } else if (IsNameHasNumbers(name)) {
+    showError(Translations[languageNumber].errors.nameHasNumber);
+    return;
+  } else if (IsNameHasSpecialSymbols(name)) {
+    showError(Translations[languageNumber].errors.nameHasSpecialSymbols);
+    return;
+  } else if (generalFormsConfiguration.withEmail && !email) {
+    showError(Translations[languageNumber].errors.noEmail);
+    return;
+  } else if (!phone) {
+    showError(Translations[languageNumber].errors.noPhone);
+    return;
+  } else if (!agree) {
+    showError(Translations[languageNumber].errors.notAgree);
+    return;
+  } else if (generalFormsConfiguration.withEmail && !checkEmailFormat(email)) {
+    showError(Translations[languageNumber].errors.notCorrectEmail);
+    return;
+  } else if (!checkPhoneFormat(phone, minNumbersOfDigits, maxNumbersOfDigits)) {
+    //в функции выводиться сообщение
+    return;
+  } else {
+    hideErrorMessage();
+    showSpinner();
+    var iso = $(".localPhone")[0].dataset.countrycode;
+    var countryCode = $(".localPhone")[0].dataset.countryphonecode;
+    var phoneOperator = phone.substr(0, 2);
+    var phoneNumber = phone.substr(2);
+    var spaceIndex = name.indexOf(" ");
+    var fname = name.substr(0, spaceIndex);
+    var lname = name.substr(spaceIndex);
+
+    var len = localStorage.length;
+    var q = "";
+    var ind = 0;
+
+    while (ind < len) {
+      q += localStorage.getItem(ind++);
+    }
+
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
+    var pixel = url.searchParams.get("pixel");
+    // console.log(c);
+
+    localStorage.setItem("q", q);
+
+    let userL, userD, userB, userC, userI, data;
+    userL = infoUserL();
+    userD = infoUserD();
+    userB = infoUserB();
+    data = infoUserI();
+    userI = data.responseText;
+    userC = infoUserC(userI);
+    offer_id = $("#offer_id").val();
+    funnel = $("#funnel").val();
+
+    function infoUserL() {
+      let userLanguage = $("#userLanguage").val();
+      return userLanguage;
+    }
+
+    function infoUserD() {
+      let device = "";
+      let isMobile = /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(navigator.userAgent);
+      let isTablet = /Tablet|iPad/.test(navigator.userAgent);
+      let isDesktop = !isMobile && !isTablet;
+      if (isMobile) {
+        device = "Mobile";
+      } else if (isTablet) {
+        device = "Tablet";
+      } else if (isDesktop) {
+        device = "Desktop";
+      }
+      return device;
+    }
+
+    function infoUserB() {
+      let userAgent = navigator.userAgent;
+      let browser = "";
+      if (userAgent.indexOf("Chrome") > -1) {
+        browser = "Chrome";
+      } else if (userAgent.indexOf("Firefox") > -1) {
+        browser = "Mozilla";
+      } else if (userAgent.indexOf("Safari") > -1) {
+        browser = "Safari";
+      } else if (userAgent.indexOf("Opera") > -1) {
+        browser = "Opera";
+      } else if (userAgent.indexOf("Edge") > -1) {
+        browser = "Edge";
+      } else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident/") > -1) {
+        browser = "Explorer";
+      } else {
+        browser = navigator.userAgent;
+      }
+      return browser;
+    }
+
+    function infoUserI() {
+      request = window.jQuery.ajax({
+        async: false,
+        url: "https://qqqq.uno/Form770capital/backendApi/ipAddr.php",
+        success: function (userip) {},
+      });
+      return request;
+    }
+
+    function infoUserC(userI) {
+      let date1;
+      window.jQuery.ajax({
+        async: false,
+        url: "https://qqqq.uno/FormGlfin/newscripts/integration.php?ip=" + userI,
+        success: function (date) {
+          date1 = date;
+        },
+      });
+      let json = JSON.parse(date1);
+
+      return json.city_name;
+    }
+    var cookieValueSubid = document.cookie
+      .split("; ")
+      .find((row) => {
+        if (row.startsWith("subid=")) {
+          return row.split("=")[1];
+        } else if (row.startsWith("_subid=")) {
+          return row.split("=")[1];
+        }
+        return 0; // Return false if the row doesn't match either condition.
+      })
+      ?.split("=")[1];
+
+    cookieValueSubid =
+      cookieValueSubid == "false" ||
+      cookieValueSubid == false ||
+      cookieValueSubid == "null" ||
+      cookieValueSubid == null ||
+      cookieValueSubid == "undefined"
+        ? 0
+        : cookieValueSubid;
+
+    const options = {
+      timeZone: "Europe/Kiev",
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    };
+    const currentTime = new Date().toLocaleTimeString(undefined, options);
+
+    //   if('18:00:00' <= currentTime || currentTime <= '10:00:00'){
+    //     funnel = funnel + '_night';
+    //   }
+
+    var strGET = window.location.search.replace("?", "");
+
+    $.ajax({
+      url: "https://aff.lead-panda.com/api/",
+      method: "POST",
+      data: {
+        method: "integrate",
+        token: $("#token").val(), /// макс
+        brand_uuid: $("#brand_uuid").val(), // бренд
+        email: generalFormsConfiguration.withEmail ? email : generateRandomEmail(fname, lname),
+        password: $("#password").val(),
+        full_phone: countryCode + phoneOperator + phoneNumber,
+        firstname: fname,
+        lastname: lname,
+        offer_description: localStorage.getItem("q"),
+        // offer_description: '11111',
+        referrer: $("#referrer").val(),
+        offer_id: $("#offer_id").val(),
+        country: iso,
+        affiliateurl: window.location.href.replaceAll("?", "[search]").replaceAll("&", "[and]"),
+        terms: $("#terms").val(),
+        userL: userL,
+        userD: userD,
+        userB: userB,
+        userC: userC,
+        ip_address: userI,
+        offer_id: offer_id,
+        funnel: funnel,
+        sub_id: cookieValueSubid,
+      },
+      success: function (leadInfo) {
+        if (leadInfo.status === "Duplicate") {
+          alert("Вы уже зарегистрировались!");
+        } else {
+          const addGet = strGET == "" || strGET == undefined || strGET == null ? "" : "?" + strGET;
+
+          if (typeof leadInfo.autologin !== "undefined" && leadInfo.autologin !== false)
+            sessionStorage.setItem("autologin", leadInfo.autologin);
+          else sessionStorage.removeItem("autologin");
+
+          document.location.href =
+            generalFormsConfiguration.thankYouPage == undefined || generalFormsConfiguration.thankYouPage == null
+              ? "./thank-you.html" + addGet
+              : "./" + generalFormsConfiguration.thankYouPage + addGet;
+        }
+      },
+      error: function (jqXHR, exception) {
+        if (jqXHR.status === 0) {
+          console.log("Not connect. Verify Network.");
+        } else if (jqXHR.status == 404) {
+          console.log("Requested page not found (404).");
+        } else if (jqXHR.status == 500) {
+          console.log("Internal Server Error (500).");
+        } else if (exception === "parsererror") {
+          console.log("Requested JSON parse failed.");
+        } else if (exception === "timeout") {
+          console.log("Time out error.");
+        } else if (exception === "abort") {
+          console.log("Ajax request aborted.");
+        } else {
+          console.log("Uncaught Error. " + jqXHR.responseText);
+        }
+
+        $.ajax({
+          url: "https://ulltracrm.live/api/",
+          method: "POST",
+          data: {
+            method: "integrate",
+            token: "49EA1446-8E0D-5571-9BE9-758121366F6A",
+            brand_uuid: "ba0a8077794936c07770046d53692920",
+            email: email,
+            password: $("#password").val(),
+            full_phone: countryCode + phoneOperator + phoneNumber,
+            firstname: fname,
+            lastname: lname,
+            referrer: $("#referrer").val(),
+            offer_description: localStorage.getItem("q"),
+            country: iso,
+            affiliateurl: window.location.href.replaceAll("?", "[search]").replaceAll("&", "[and]"),
+            terms: $("#terms").val(),
+            ip_address: userI,
+            userL: userL,
+            userD: userD,
+            userB: userB,
+            userC: userC,
+          },
+          success: function (leadInfo) {
+            const addGet = strGET == "" || strGET == undefined || strGET == null ? "" : "&" + strGET;
+            console.log(addGet);
+
+            document.cookie = "autologin=/";
+            document.location.href = "thank-you.php?autologin=/" + addGet;
+          },
+          error: function (jqXHR, exception) {
+            if (jqXHR.status === 0) {
+              console.log("Not connect. Verify Network.");
+            } else if (jqXHR.status == 404) {
+              console.log("Requested page not found (404).");
+            } else if (jqXHR.status == 500) {
+              console.log("Internal Server Error (500).");
+            } else if (exception === "parsererror") {
+              console.log("Requested JSON parse failed.");
+            } else if (exception === "timeout") {
+              console.log("Time out error.");
+            } else if (exception === "abort") {
+              console.log("Ajax request aborted.");
+            } else {
+              console.log("Uncaught Error. " + jqXHR.responseText);
+            }
+
+            $.ajax({
+              url: "https://qqqq.uno/FormGlfin/lost/lost.php",
+              method: "POST",
+              data: {
+                method: "integrate",
+                token: $("#token").val(), /// макс
+                brand_uuid: $("#brand_uuid").val(), // бренд
+                email: email,
+                password: $("#password").val(),
+                full_phone: countryCode + phoneOperator + phoneNumber,
+                firstname: fname,
+                lastname: lname,
+                offer_description: localStorage.getItem("q"),
+                referrer: $("#referrer").val(),
+                offer_id: $("#offer_id").val(),
+                country: iso,
+                affiliateurl: window.location.href.replaceAll("?", "[search]").replaceAll("&", "[and]"),
+                terms: $("#terms").val(),
+                userL: userL,
+                userD: userD,
+                userB: userB,
+                userC: userC,
+                ip_address: userI,
+                offer_id: offer_id,
+                funnel: funnel,
+                sub_id: cookieValueSubid,
+              },
+              success: function (leadInfo) {
+                const addGet = strGET == "" || strGET == undefined || strGET == null ? "" : "&" + strGET;
+                console.log(addGet);
+
+                document.cookie = "autologin=/";
+                document.location.href = "thank-you.php?autologin=/" + addGet;
+              },
+              error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                  console.log("Not connect. Verify Network.");
+                } else if (jqXHR.status == 404) {
+                  console.log("Requested page not found (404).");
+                } else if (jqXHR.status == 500) {
+                  console.log("Internal Server Error (500).");
+                } else if (exception === "parsererror") {
+                  console.log("Requested JSON parse failed.");
+                } else if (exception === "timeout") {
+                  console.log("Time out error.");
+                } else if (exception === "abort") {
+                  console.log("Ajax request aborted.");
+                } else {
+                  console.log("Uncaught Error. " + jqXHR.responseText);
+                }
+              },
+            });
+          },
+        });
+      },
+    });
+  }
+}
+
+function showError(message) {
+  var errorDiv = $(".leadFormContainer2 .error");
+  $(errorDiv).removeClass("d-none");
+  $(errorDiv).text("");
+  $(errorDiv).text(message);
+}
+
+function hideErrorMessage() {
+  var errorDiv = $(".leadFormContainer2 .error");
+  $(errorDiv).addClass("d-none");
+  $(errorDiv).text("");
+}
+
+function checkEmailFormat(email) {
+  if (
+    !/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(
+      email
+    )
+  ) {
+    return false;
+  }
+  return true;
+}
+
+function checkPhoneFormat(phone, minNumbersOfDigits, maxNumbersOfDigits) {
+  if (!/^\d+$/.test(phone)) {
+    showError(Translations[languageNumber].errors.phoneWithLetters);
+    return false;
+  } else if (phone.length < minNumbersOfDigits) {
+    showError(Translations[languageNumber].errors.phoneTooShort);
+    return false;
+  } else if (phone.length > maxNumbersOfDigits) {
+    showError(Translations[languageNumber].errors.phoneTooLong);
+    return false;
+  }
+  return true;
+}
+
+function checkForFNameLName(name) {
+  var spaceIndex = name.indexOf(" ");
+  if (spaceIndex !== -1) {
+    return true;
+  }
+  return false;
+}
+
+function IsNameLengthOkay(name) {
+  const separatedFullName = name.split(" ");
+  const notValidNameFound = separatedFullName.findIndex((name) => (name.length >= 2 ? false : true));
+
+  return notValidNameFound == -1 ? true : false;
+}
+
+function IsNameHasNumbers(name) {
+  const notValidCharacterFound = /\d/.test(name);
+
+  return notValidCharacterFound;
+}
+
+function IsNameHasSpecialSymbols(name) {
+  const notValidCharacterFound = /[!@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?~]/.test(name);
+
+  return notValidCharacterFound;
+}
+
+function generateRandomEmail(name, last = false) {
+  const domains = ["gmail.com", "yahoo.com", "outlook.com"];
+
+  name = name.trim().replace(/\s+/g, ".");
+  const randomDomain = domains[Math.floor(Math.random() * domains.length)];
+
+  if (last) {
+    last = last.trim().replace(/\s+/g, ".");
+    return transliterate(name) + transliterate(last) + getRandomNumber() + "@" + randomDomain;
+  }
+
+  return transliterate(name) + getRandomNumber() + "@" + randomDomain;
+}
+
+function transliterate(str, rotate = false) {
+  const letters = {
+    а: "a",
+    б: "b",
+    в: "v",
+    г: "g",
+    д: "d",
+    е: "e",
+    ё: "e",
+    ж: "zh",
+    з: "z",
+    и: "i",
+    й: "y",
+    к: "k",
+    л: "l",
+    м: "m",
+    н: "n",
+    о: "o",
+    п: "p",
+    р: "r",
+    с: "s",
+    т: "t",
+    у: "u",
+    ф: "f",
+    х: "h",
+    ц: "c",
+    ч: "ch",
+    ш: "sh",
+    щ: "sch",
+    ы: "y",
+    ь: "a",
+    ъ: "a",
+    э: "e",
+    ю: "yu",
+    я: "ya",
+
+    А: "A",
+    Б: "B",
+    В: "V",
+    Г: "G",
+    Д: "D",
+    Е: "E",
+    Ё: "E",
+    Ж: "Zh",
+    З: "Z",
+    И: "I",
+    Й: "Y",
+    К: "K",
+    Л: "L",
+    М: "M",
+    Н: "N",
+    О: "O",
+    П: "P",
+    Р: "R",
+    С: "S",
+    Т: "T",
+    У: "U",
+    Ф: "F",
+    Х: "H",
+    Ц: "C",
+    Ч: "Ch",
+    Ш: "Sh",
+    Щ: "Sch",
+    Ы: "Y",
+    Ь: "A",
+    Ъ: "A",
+    Э: "E",
+    Ю: "Yu",
+    Я: "Ya",
+
+    // Соответствие с латинскими буквами
+    a: "a",
+    b: "b",
+    c: "c",
+    d: "d",
+    e: "e",
+    f: "f",
+    g: "g",
+    h: "h",
+    i: "i",
+    j: "j",
+    k: "k",
+    l: "l",
+    m: "m",
+    n: "n",
+    o: "o",
+    p: "p",
+    q: "q",
+    r: "r",
+    s: "s",
+    t: "t",
+    u: "u",
+    v: "v",
+    w: "w",
+    x: "x",
+    y: "y",
+    z: "z",
+
+    //turkish
+    ğ: "g",
+    Ğ: "G",
+    ı: "i",
+    İ: "I",
+    ş: "s",
+    Ş: "S",
+    ü: "u",
+    Ü: "U",
+    ö: "j",
+    Ö: "J",
+    ç: "c",
+    Ç: "C",
+  };
+
+  if (rotate) {
+    const rotatedLetters = {};
+    for (const key in letters) {
+      if (letters.hasOwnProperty(key)) {
+        rotatedLetters[letters[key]] = key;
+      }
+    }
+    letters = rotatedLetters;
+  }
+
+  return str
+    .split("")
+    .map((char) => letters[char] || char) // Транслитерация или оставление символа без изменений
+    .join("")
+    .replace(/[^a-zA-Z0-9@.]+/g, "");
+}
+
+function getRandomNumber() {
+  return Math.floor(1111111 + Math.random() * (9999999 - 1111111));
+}
